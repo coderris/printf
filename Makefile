@@ -10,29 +10,55 @@
 #                                                                              #
 # **************************************************************************** #
 
+# Nombre de la librería final
 NAME = libftprintf.a
+program: 
+	cc program.c -L./ -lftprintf -L./libft -lft
+# Compilador y flags
 CC = cc
-CFLAGS = -Werror -Wextra -Wall
+CFLAGS = -Wall -Wextra -Werror -I$(LIBFT_DIR)
 
-SRCS = ft_printf.c
+# Directorios
+LIBFT_DIR = ./libft
+PRINTF_DIR = .
 
-OBJ = $(SRCS: .c=.o)
-INCL = ft_printf.h
+# Archivos fuente
+SRCS = $(PRINTF_DIR)/ft_printf.c $(PRINTF_DIR)/ft_case.c $(PRINTF_DIR)/ft_putnbr_hex_fd.c
 
-%.o: %.c $(INCL)
+# Archivos objeto
+OBJ = $(SRCS:.c=.o)
+
+# Incluir la librería libft
+LIBFT = $(LIBFT_DIR)/libft.a
+
+# Regla para compilar la librería libft
+$(LIBFT):
+	make -C $(LIBFT_DIR)
+
+# Regla para compilar los archivos .c a .o
+%.o: $(PRINTF_DIR)/%.c $(PRINTF_DIR)/ft_printf.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)
+# Regla para crear la librería libftprintf.a
+$(NAME): $(OBJ) $(LIBFT)
+	ar rcs $(NAME) $(OBJ) $(LIBFT)
 
-all: $(NAME)
-
+# Limpiar objetos generados
 clean:
 	rm -f $(OBJ)
+	make -C $(LIBFT_DIR) clean
+
+# Limpiar completamente (objetos y la librería)
 
 fclean: clean
 	rm -f $(NAME)
+	make -C $(LIBFT_DIR) fclean
 
+# Recompilar todo desde cero
 re: fclean all
 
-.PHONY: clean fclean norma all re bonus
+# Regla por defecto
+all: $(NAME)
+
+.PHONY: clean fclean re all
+

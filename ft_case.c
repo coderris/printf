@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lanton-m <lanton-m@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/08 18:36:40 by lanton-m          #+#    #+#             */
-/*   Updated: 2025/03/08 18:36:40 by lanton-m         ###   ########.fr       */
+/*   Created: 2025/03/10 19:32:43 by lanton-m          #+#    #+#             */
+/*   Updated: 2025/03/10 19:32:43 by lanton-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void ft_case(char const *str, va_list args)
     else if (*str == 'd')
         ft_strnumber();
     
-    /*    else if (*str == "u") 
+  /*      else if (*str == "u") 
         ft_strunsig();
     else if (*str == )
 */

@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_hex_fd.c                                 :+:      :+:    :+:   */
+/*   program.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lanton-m <lanton-m@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/10 19:33:23 by lanton-m          #+#    #+#             */
-/*   Updated: 2025/03/10 19:33:23 by lanton-m         ###   ########.fr       */
+/*   Created: 2025/03/10 20:12:02 by lanton-m          #+#    #+#             */
+/*   Updated: 2025/03/10 20:12:02 by lanton-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
-void ft_putnbr_hex_fd(uintptr_t c, int fd)
+int main(void)
 {
-    char    hexadigits[17] = "0123456789abcdef";
-
-    if (c >= 16)
-        ft_putnbr_hex_fd(c / 16, fd);
-    ft_putchar_fd(hexadigits[c % 16],fd);
+    ft_printf("hola %c\n",'a');
+    printf("hola %c\n",'a');
+    return (0);
 }
