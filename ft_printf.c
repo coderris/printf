@@ -27,11 +27,12 @@ int ft_printf(char const *str, ...)
         return ('\0');
     while (str[i])
     {
-        if (str[i] == '%' && str[i + 1] != '%')
+        if (str[i] == '%')
         {
             i++;
             str = str + i;
             ft_case(str, args);
+            ft_putchar_fd(str, 1);
             str = holder;
         }
         else

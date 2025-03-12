@@ -29,8 +29,14 @@ void ft_case(char const *str, va_list args)
         ft_putchar_fd('x',1);
         ft_putnbr_hex_fd(ptr_numb,1);
     }
-    else if (*str == 'd')
-        ft_strnumber();
+    else if (*str == 'd' || *str == 'i')
+        ft_putnbr_fd(va_arg(args, int),1);
+    else if (*str == 'u')
+        ft_putendl_fd(ft_itoa(va_arg(args, unsigned int)),1);
+    else if (*str == 'x')
+        ft_putnbr_hex_fd(va_arg(args, unsigned int),1);
+    else if (*str == 'X')
+        ft_putnbrM_hex_fd(va_arg(args, unsigned int),1);
     
   /*      else if (*str == "u") 
         ft_strunsig();
