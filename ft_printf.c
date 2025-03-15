@@ -17,14 +17,16 @@ int ft_printf(char const *str, ...)
 
     va_list args;
     int i;
+    int counter;
     char const  *holder;
 
     i = 0;
+    counter = 0;
     holder = str;
     va_start (args, str);
 
     if (!str)
-        return ('\0');
+        return (-1);
     while (str[i])
     {
         if (str[i] == '%')
@@ -34,18 +36,20 @@ int ft_printf(char const *str, ...)
             {
                 ft_putchar_fd('%',1);
                 i++;
+                counter += 2;
             }
             else
             {
                 str = str + i;
-                ft_case(str, args);
-                str = holder;                
+                counter += ft_case(str, args) - 1;
+                str = holder;
             }
         }
         else
             ft_putchar_fd(str[i], 1);
-        i++;;
+        i++;
+        counter++;
     }
     va_end (args);
-    return (1);
+    return (counter);
 }

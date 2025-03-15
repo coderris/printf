@@ -15,7 +15,12 @@
 
 int main(void)
 {
-    ft_printf("hola %c\n", 'ab');
-    printf("hola %c\n", 'ab');
+    int a = ft_printf(" %p ", -1);
+    int b = printf(" %p ", -1);
+
+    if (a == b)
+        printf("YES");
+    else
+        printf("NO %i %i",a,b);
     return (0);
 }

@@ -12,15 +12,24 @@
 
 #include "ft_printf.h"
 
-void ft_case(char const *str, va_list args)
+int ft_case(char const *str, va_list args)
 {
     void    *ptr;
     uintptr_t   ptr_numb;
 
     if (*str == 'c')
+    {
         ft_putchar_fd(va_arg(args, int), 1);
+        return (1);
+    }
     else if (*str == 's')
-        ft_putendl_fd(va_arg(args, char *), 1);
+    {
+        ptr = va_arg(args, char *);
+        ft_putendl_fd(ptr, 1);
+        if (!ptr)
+            return (0);
+        return ((int)ft_strlen(ptr));
+    }
     else if (*str == 'p')
     {
         ptr = va_arg(args, void *);
@@ -36,7 +45,6 @@ void ft_case(char const *str, va_list args)
     else if (*str == 'x')
         ft_putnbr_hex_fd(va_arg(args, unsigned int),1);
     else if (*str == 'X')
-        ft_putnbrM_hex_fd(va_arg(args, unsigned int),1);
-    else 
-        ft_putchar_fd('%', 1);
+        ft_putnbrm_hex_fd(va_arg(args, unsigned int),1);
+    return (-1);
 }

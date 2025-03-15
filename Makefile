@@ -10,56 +10,54 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Nombre de la librería final
-NAME = libftprintf.a
-program: 
-	cc program.c -L./ -lftprintf -L./libft -lft
-# Compilador y flags
-CC = cc
-CFLAGS = -Wall -Wextra -Werror -I$(LIBFT_DIR)
+# 💻 Variables del compilador
+CC      := cc
+CFLAGS  := -Wall -Wextra -Werror
+AR      := ar rcs
 
-# Directorios
-LIBFT_DIR = ./libft
-PRINTF_DIR = .
+# 📌 Nombre de la biblioteca final
+NAME    := libftprintf.a
 
-# Archivos fuente
-SRCS = $(PRINTF_DIR)/ft_printf.c $(PRINTF_DIR)/ft_case.c $(PRINTF_DIR)/ft_putnbr_hex_fd.c \
-$(PRINTF_DIR)/ft_putnbrM_hex_fd.c
+# 📂 Directorio de libft
+LIBFT_DIR  := libft
+LIBFT      := $(LIBFT_DIR)/libft.a
 
-# Archivos objeto
-OBJ = $(SRCS:.c=.o)
+# 🔍 Archivos fuente de ft_printf
+SRC     := ft_printf.c ft_case.c ft_putnbr_hex_fd.c ft_putnbrm_hex_fd.c
+OBJ     := $(SRC:.c=.o)
 
-# Incluir la librería libft
-LIBFT = $(LIBFT_DIR)/libft.a
+# 🏗️ Regla principal: generar libftprintf.a
+all: $(LIBFT) $(NAME)
 
-# Regla para compilar la librería libft
+# 🔹 Compilar libft primero dentro de su carpeta
 $(LIBFT):
-	make -C $(LIBFT_DIR)
+	@$(MAKE) -C $(LIBFT_DIR)
 
-# Regla para compilar los archivos .c a .o
-%.o: $(PRINTF_DIR)/%.c $(PRINTF_DIR)/ft_printf.h
+# 🔹 Extraer los .o de libft.a y unirlos con ft_printf
+$(NAME): $(OBJ) $(LIBFT)
+	@rm -f $(NAME)  # Borra cualquier versión anterior
+	@mkdir -p temp_libft_objs  # Crea carpeta temporal para objetos de libft
+	@cd temp_libft_objs && ar x ../$(LIBFT)  # Extrae los objetos de libft.a
+	$(AR) $(NAME) $(OBJ) temp_libft_objs/*.o  # Une todos los objetos en libftprintf.a
+	@rm -rf temp_libft_objs  # Elimina los objetos temporales
+	@echo "✅ $(NAME) creado correctamente"
+
+# 🛠️ Compilación de archivos objeto
+%.o: %.c ft_printf.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Regla para crear la librería libftprintf.a
-$(NAME): $(OBJ) $(LIBFT)
-	ar rcs $(NAME) $(OBJ) $(LIBFT)
-
-# Limpiar objetos generados
+# 🗑️ Limpiar archivos objeto de ft_printf
 clean:
+	@$(MAKE) -C $(LIBFT_DIR) clean
 	rm -f $(OBJ)
-	make -C $(LIBFT_DIR) clean
 
-# Limpiar completamente (objetos y la librería)
-
+# 🗑️ Limpiar todo, incluyendo libftprintf.a
 fclean: clean
+	@$(MAKE) -C $(LIBFT_DIR) fclean
 	rm -f $(NAME)
-	make -C $(LIBFT_DIR) fclean
 
-# Recompilar todo desde cero
+# 🔄 Recompilar todo desde cero
 re: fclean all
 
-# Regla por defecto
-all: $(NAME)
-
-.PHONY: clean fclean re all
-
+# 📌 Evitar conflictos con nombres de archivos
+.PHONY: all clean fclean re
