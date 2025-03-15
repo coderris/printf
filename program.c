@@ -15,7 +15,7 @@
 
 int main(void)
 {
-    ft_printf("hola %X\n", -12);
-    printf("hola %X\n",-12);
+    ft_printf("hola %c\n", 'ab');
+    printf("hola %c\n", 'ab');
     return (0);
 }

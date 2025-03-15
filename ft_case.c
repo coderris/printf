@@ -37,9 +37,6 @@ void ft_case(char const *str, va_list args)
         ft_putnbr_hex_fd(va_arg(args, unsigned int),1);
     else if (*str == 'X')
         ft_putnbrM_hex_fd(va_arg(args, unsigned int),1);
-    
-  /*      else if (*str == "u") 
-        ft_strunsig();
-    else if (*str == )
-*/
+    else 
+        ft_putchar_fd('%', 1);
 }

@@ -30,10 +30,17 @@ int ft_printf(char const *str, ...)
         if (str[i] == '%')
         {
             i++;
-            str = str + i;
-            ft_case(str, args);
-            ft_putchar_fd(str, 1);
-            str = holder;
+            if (str[i] == '%')
+            {
+                ft_putchar_fd('%',1);
+                i++;
+            }
+            else
+            {
+                str = str + i;
+                ft_case(str, args);
+                str = holder;                
+            }
         }
         else
             ft_putchar_fd(str[i], 1);

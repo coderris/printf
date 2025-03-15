@@ -17,6 +17,6 @@ void ft_putnbrM_hex_fd(uintptr_t c, int fd)
     char    hexadigits[17] = "0123456789ABCDEF";
 
     if (c >= 16)
-        ft_putnbr_hex_fd(c / 16, fd);
+        ft_putnbrM_hex_fd(c / 16, fd);
     ft_putchar_fd(hexadigits[c % 16],fd);
 }

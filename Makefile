@@ -23,7 +23,8 @@ LIBFT_DIR = ./libft
 PRINTF_DIR = .
 
 # Archivos fuente
-SRCS = $(PRINTF_DIR)/ft_printf.c $(PRINTF_DIR)/ft_case.c $(PRINTF_DIR)/ft_putnbr_hex_fd.c
+SRCS = $(PRINTF_DIR)/ft_printf.c $(PRINTF_DIR)/ft_case.c $(PRINTF_DIR)/ft_putnbr_hex_fd.c \
+$(PRINTF_DIR)/ft_putnbrM_hex_fd.c
 
 # Archivos objeto
 OBJ = $(SRCS:.c=.o)
