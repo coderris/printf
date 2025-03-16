@@ -15,10 +15,12 @@
 # include <stdarg.h>
 # include <stdint.h>
 # include <stdio.h>
+# include <limits.h>
 # include "libft/libft.h"
 
 int ft_printf(char const *format, ...);
 int ft_case(char const *str, va_list args);
+int ft_times_hex(uintptr_t c);
 void ft_putnbr_hex_fd(uintptr_t c, int fd);
 void ft_putnbrm_hex_fd(uintptr_t c, int fd);
 

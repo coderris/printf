@@ -23,7 +23,7 @@ LIBFT_DIR  := libft
 LIBFT      := $(LIBFT_DIR)/libft.a
 
 # 🔍 Archivos fuente de ft_printf
-SRC     := ft_printf.c ft_case.c ft_putnbr_hex_fd.c ft_putnbrm_hex_fd.c
+SRC     := ft_printf.c ft_case.c ft_putnbr_hex_fd.c ft_putnbrm_hex_fd.c ft_times_hex.c
 OBJ     := $(SRC:.c=.o)
 
 # 🏗️ Regla principal: generar libftprintf.a

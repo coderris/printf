@@ -15,12 +15,16 @@
 
 int main(void)
 {
-    int a = ft_printf(" %p ", -1);
-    int b = printf(" %p ", -1);
-
+    int a = ft_printf("%i", -200000);
+    printf("\n");
+    int b = printf("%i", -200000);
+    printf("\n");
     if (a == b)
-        printf("YES");
+    {
+        printf("YES \n");
+        printf("%i %i\n",a,b);
+    }
     else
-        printf("NO %i %i",a,b);
+        printf("NO %i %i\n",a,b);
     return (0);
 }
