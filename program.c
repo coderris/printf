@@ -15,9 +15,9 @@
 
 int main(void)
 {
-    int a = ft_printf("%i", -200000);
+    int a = ft_printf("%u", -10);
     printf("\n");
-    int b = printf("%i", -200000);
+    int b = printf("%u", -10);
     printf("\n");
     if (a == b)
     {

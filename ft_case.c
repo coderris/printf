@@ -55,7 +55,11 @@ int ft_case(char const *str, va_list args)
         return(ft_strlen(ft_itoa(num)));
     }
     else if (*str == 'u')
-        ft_putendl_fd(ft_itoa(va_arg(args, unsigned int)),1);
+    {
+        ptr = ft_itoa(va_arg(args, unsigned int));
+        ft_putendl_fd(ptr,1);
+        return (ft_strlen(ptr));
+    }
     else if (*str == 'x')
         ft_putnbr_hex_fd(va_arg(args, unsigned int),1);
     else if (*str == 'X')
