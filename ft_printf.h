@@ -18,10 +18,12 @@
 # include <limits.h>
 # include "libft/libft.h"
 
-int ft_printf(char const *format, ...);
-int ft_case(char const *str, va_list args);
-int ft_times_hex(uintptr_t c);
-void ft_putnbr_hex_fd(uintptr_t c, int fd);
-void ft_putnbrm_hex_fd(uintptr_t c, int fd);
+int		ft_printf(char const *format, ...);
+int		ft_case(char const *str, va_list args);
+int		ft_idcase(int num);
+int		ft_scase(char * ptr);
+int		ft_pcase(void *ptr);
+void	ft_putnbr_hex_fd(uintptr_t c, int fd);
+void	ft_putnbrm_hex_fd(uintptr_t c, int fd);
 
 #endif
