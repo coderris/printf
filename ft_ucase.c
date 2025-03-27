@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbrm_hex_fd.c                                :+:      :+:    :+:   */
+/*   ft_ucase.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lanton-m <lanton-m@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 13:04:27 by lanton-m          #+#    #+#             */
-/*   Updated: 2025/03/15 19:40:00 by lanton-m         ###   ########.fr       */
+/*   Created: 2025/03/24 12:07:47 by lanton-m          #+#    #+#             */
+/*   Updated: 2025/03/24 12:07:47 by lanton-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void ft_putnbrm_hex_fd(uintptr_t c, int fd)
+int ft_ucase(unsigned int num)
 {
-    char    hexadigits[17] = "0123456789ABCDEF";
+    int i;
 
-    if (c >= 16)
-        ft_putnbrm_hex_fd(c / 16, fd);
-    ft_putchar_fd(hexadigits[c % 16],fd);
+    i = 0;
+    ft_putnbru_fd(num, 1);
+    if (num == 0)
+        return (1);
+    while (num != 0)
+    {
+        num = num / 10;
+        i++;
+    }
+    return i;
 }

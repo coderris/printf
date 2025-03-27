@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_times_hex.c                                     :+:      :+:    :+:   */
+/*   ft_xcase.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lanton-m <lanton-m@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/16 18:39:45 by lanton-m          #+#    #+#             */
-/*   Updated: 2025/03/16 18:39:45 by lanton-m         ###   ########.fr       */
+/*   Created: 2025/03/24 12:39:17 by lanton-m          #+#    #+#             */
+/*   Updated: 2025/03/24 12:39:17 by lanton-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_times_hex(uintptr_t c)
+int ft_xcase(uintptr_t num, int n)
 {
-    int i;
-
-    i = 1;
-    while (c >= 16)
-    {
-        c = c / 16;
-        i++;
-    }
-
-    return i;
+    ft_putnbr_hex_fd(num, 1, n);
+    return (ft_times_hex(num));
 }

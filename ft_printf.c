@@ -12,10 +12,8 @@
 
 #include "ft_printf.h"
 
-int ft_printf(char const *str, ...)
+static int  ft_reader(char const *str, va_list args)
 {
-
-    va_list args;
     int i;
     int counter;
     char const  *holder;
@@ -23,21 +21,13 @@ int ft_printf(char const *str, ...)
     i = 0;
     counter = 0;
     holder = str;
-    va_start (args, str);
-
-    if (!str)
-        return (-1);
     while (str[i])
     {
         if (str[i] == '%')
         {
             i++;
             if (str[i] == '%')
-            {
                 ft_putchar_fd('%',1);
-                i++;
-                counter += 2;
-            }
             else
             {
                 str = str + i;
@@ -50,6 +40,19 @@ int ft_printf(char const *str, ...)
         i++;
         counter++;
     }
-    va_end (args);
     return (counter);
+}
+
+int ft_printf(char const *str, ...)
+{
+
+    va_list args;
+    int result;
+
+    if (!str)
+        return (-1);
+    va_start (args, str);
+    result = ft_reader(str, args);
+    va_end (args);
+    return (result);
 }

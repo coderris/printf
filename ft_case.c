@@ -23,10 +23,10 @@ int ft_case(char const *str, va_list args)
     if (*str == 'd' || *str == 'i')
         return (ft_idcase(va_arg(args, int)));
     if (*str == 'u')
-        return (ft_putendl_fd(ft_itoa(va_arg(args, unsigned int)), 1));
+        return (ft_ucase(va_arg(args, unsigned int)));
     if (*str == 'x')
-        ft_putnbr_hex_fd(va_arg(args, unsigned int),1); // return
+        return (ft_xcase(va_arg(args, uintptr_t), 1));  // return
     if (*str == 'X')
-        ft_putnbrm_hex_fd(va_arg(args, unsigned int),1);
+        return (ft_xcase(va_arg(args, uintptr_t), 2));
     return (-1);
 }

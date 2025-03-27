@@ -12,27 +12,15 @@
 
 #include "ft_printf.h"
 
-static int times_hex(uintptr_t	num)
-{
-	int i;
-
-    i = 3;
-    while (num >= 16)
-    {
-        num = num / 16;
-        i++;
-    }
-    return i;
-}
-
 int	ft_pcase(void *ptr)
 {
 	uintptr_t	ptr_numb;
+	int a;
 
 	if (!ptr)
 		return (ft_putstr_fd("(nil)", 1));
 	ptr_numb = (uintptr_t)ptr;
-	ft_putstr_fd("0x",1);
-	ft_putnbr_hex_fd(ptr_numb,1);
-	return (times_hex(ptr_numb));
+	a = ft_putstr_fd("0x",1);
+	ft_putnbr_hex_fd(ptr_numb,1, 1);
+	return (ft_times_hex(ptr_numb) + a);
 }
